@@ -39,33 +39,50 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :parchase
+- has_many :parchases
 
 ## items テーブル
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| item_image_id | int     | null: false |
 | item_name     | string  | null: false |
 | item_text     | text    | null: false |
+| Category      | integer | null: false |　
+| Status        | integer | null: false |
+| Delivery_fee  | integer | null: false |
+| area          | integer | null: false |
+| day           | integer | null: false |
 | price         | integer | null: false |
-
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one    :purchase
 
 ## purchase テーブル
 
+| Column | Type       | Options     |
+| ------ | ---------- | ----------- |
+| user   | varchar    | null: false |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one    :address
+
+
+##  addressテーブル
+
 | Column         | Type    | Options     |
 | -------------- | ------- | ----------- |
-| card_num       | integer | null: false |
-| security_code  | varchar | null: false |
 | postcode       | varchar | null: false |
+| prefecture_id	 | int     | null: false |
 | city           | varchar | null: false |
 | block          | varchar | null: false |
 | phone_number   | varchar | null: false |
 
-- belongs_to :users
-- belongs_to :items
+### Association
+
+- belongs_to :purchase
