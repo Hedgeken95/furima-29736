@@ -43,16 +43,16 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| item_name     | string  | null: false |
-| item_text     | text    | null: false |
-| Category      | integer | null: false |　
-| Status        | integer | null: false |
-| Delivery_fee  | integer | null: false |
-| area          | integer | null: false |
-| day           | integer | null: false |
-| price         | integer | null: false |
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| item_name     | string     | null: false |
+| item_text     | text       | null: false |
+| category      | integer    | null: false |　
+| status        | references | null: false, foreign_key:true|
+| delivery_fee  | references | null: false, foreign_key:true|
+| area          | references | null: false, foreign_key:true|
+| day           | references | null: false, foreign_key:true|
+| price         | integer    | null: false |
 
 ### Association
 
@@ -63,7 +63,7 @@ Things you may want to cover:
 
 | Column | Type       | Options     |
 | ------ | ---------- | ----------- |
-| user   | varchar    | null: false |
+| user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 
 ### Association
@@ -77,11 +77,12 @@ Things you may want to cover:
 
 | Column         | Type    | Options     |
 | -------------- | ------- | ----------- |
-| postcode       | varchar | null: false |
+| postcode       | string  | null: false |
 | prefecture_id	 | int     | null: false |
-| city           | varchar | null: false |
-| block          | varchar | null: false |
-| phone_number   | varchar | null: false |
+| city           | string  | null: false |
+| block          | string  | null: false |
+| building	     | string  | null: false |
+| phone_number   | string  | null: false |
 
 ### Association
 
