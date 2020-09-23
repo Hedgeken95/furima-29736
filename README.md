@@ -34,7 +34,7 @@ Things you may want to cover:
 | first_name      | string | null: false |
 | last_name_kana  | string | null: false |
 | first_name_kana | string | null: false |
-
+| birthday	      | date   | null: false |
 
 ### Association
 
@@ -48,18 +48,19 @@ Things you may want to cover:
 | item_name     | string     | null: false |
 | item_text     | text       | null: false |
 | category      | integer    | null: false |　
-| status        | references | null: false, foreign_key:true|
-| delivery_fee  | references | null: false, foreign_key:true|
-| area          | references | null: false, foreign_key:true|
-| day           | references | null: false, foreign_key:true|
+| status        | integer    | null: false |
+| delivery_fee  | integer    | null: false |
+| area          | integer    | null: false |
+| day           | integer    | null: false |
 | price         | integer    | null: false |
+| users         | references | null: false, foreign_key:true|
 
 ### Association
 
 - belongs_to :user
 - has_one    :purchase
 
-## purchase テーブル
+## purchases テーブル
 
 | Column | Type       | Options     |
 | ------ | ---------- | ----------- |
@@ -75,14 +76,15 @@ Things you may want to cover:
 
 ##  addressテーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------- | ----------- |
-| postcode       | string  | null: false |
-| prefecture_id	 | int     | null: false |
-| city           | string  | null: false |
-| block          | string  | null: false |
-| building	     | string  | null: false |
-| phone_number   | string  | null: false |
+| Column         | Type       | Options     |
+| -------------- | ---------- | ----------- |
+| postcode       | string     | null: false |
+| prefecture_id	 | int        | null: false |
+| city           | string     | null: false |
+| block          | string     | null: false |
+| building	     | string     |
+| phone_number   | string     | null: false |
+| purchases      | references | null: false,foreign_key:true|
 
 ### Association
 
