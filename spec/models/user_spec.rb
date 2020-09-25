@@ -94,6 +94,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
     end
+    
     context "本人情報確認ができない場合" do
       it "ユーザー本名が、名字と名前がそれぞれ必須であること1" do
         @user.last_name = ""
