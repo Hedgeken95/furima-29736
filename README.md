@@ -53,7 +53,7 @@ Things you may want to cover:
 | area          | integer    | null: false |
 | day           | integer    | null: false |
 | price         | integer    | null: false |
-| user         | references | null: false, foreign_key:true|
+| user          | references | null: false, foreign_key:true|
 
 ### Association
 
