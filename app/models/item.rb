@@ -1,21 +1,20 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
+   extend ActiveHash::Associations::ActiveRecordExtensions
 
+     belongs_to_active_hash :category
+     belongs_to_active_hash :status
+     belongs_to_active_hash :area
+     belongs_to_active_hash :day
+     belongs_to_active_hash :delivery_fee
+     
   with_options presence: true do
-    belongs_to_active_hash :category
-    validates :category_id, numericality: { other_than: 1 }
-
-    belongs_to_active_hash :status
-    validates :status_id, numericality: { other_than: 1 }
-
-    belongs_to_active_hash :delivery_fee
-    validates :delivery_fee_id, numericality: { other_than: 1 }
-
-    belongs_to_active_hash :area
-    validates :area_id, numericality: { other_than: 1 }
-
-    belongs_to_active_hash :day
-    validates :day_id, numericality: { other_than: 1 }
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :status_id
+      validates :delivery_fee_id
+      validates :area_id
+      validates :day_id
+    end
 
     validates_length_of :item_name, maximum: 40
     validates_length_of :item_text, maximum: 1000
