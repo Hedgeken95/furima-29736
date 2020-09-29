@@ -122,12 +122,13 @@
 
   <%# 商品一覧 %>
   <div class='item-contents'>
-   <% if "商品がある場合" %>
-     <h2 class='title'>ピックアップカテゴリー</h2>
-     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
-     <ul class='item-lists'>
-        <li class='list'>
-          <% @items.each do |item| %>
+
+    <h2 class='title'>ピックアップカテゴリー</h2>
+    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+    <ul class='item-lists'>
+      <% if "商品がある場合" %>
+       <% @items.each do |item| %>
+         <li class='list'>
              <%= link_to "#" do %>
                <div class='item-img-content'>
                  <%= image_tag item.image, class: "item-img" if item.image.attached? %>
@@ -151,9 +152,9 @@
                    </div>  
                </div>
              <% end %> 
-          <% end %>
-      </li>
-     <% else "商品がない場合"%> 
+          </li>
+        <% end %>
+     <% else %> 
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
@@ -171,10 +172,8 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# /商品がない場合のダミー %>
-    </ul>
-   <% end %>
+     <% end %>
+   </ul>
   </div>
   <%# /商品一覧 %>
 </div>
