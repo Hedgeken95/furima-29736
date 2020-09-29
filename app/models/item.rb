@@ -21,13 +21,15 @@ class Item < ApplicationRecord
   validates :day_id, presence: true
   validates :day_id, numericality: { other_than: 1 }
 
-  validates :item_name, :item_text, :price, presence: true
+  validates :item_name, presence: true
+  validates :item_text, presence: true
+  validates :price, presence: true
+  validates :image, presence: true
   validates_length_of :item_name, maximum: 40
   validates_length_of :item_text, maximum: 1000
   validates :price, format: { with: /\A[0-9]+\z/}
   validates_numericality_of :price, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_9999_999
-  validates :image, presence: true
-
+  
   belongs_to :user
   has_one_attached :image
 end
