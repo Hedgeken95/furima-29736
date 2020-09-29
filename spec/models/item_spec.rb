@@ -13,20 +13,6 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end  
 
-      it "item_nameが40文字以下の時出品できる" do
-        @item.item_name = "aaaaa"
-        expect(@item).to be_valid
-      end
-
-      it "item_textが1000文字以内なら出品できる" do
-        @item.item_text = "aaaaaaa"
-        expect(@item).to be_valid
-      end
-
-      it "priceが300~99999999円以内なら出品できる" do
-        @item.price = "10000"
-        expect(@item).to be_valid
-      end
     end
 
     context "出品が成功しない場合" do
@@ -80,6 +66,11 @@ RSpec.describe Item, type: :model do
         @item.price = "100"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+      it "priceが300~99999999円以内であること2" do
+        @item.price = "99999999999"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 99999999")
       end
     end
   end
