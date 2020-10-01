@@ -28,8 +28,10 @@
       <p class='or-text'>or</p>
      <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
     <% end %>
-    
-      <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+
+    <% if user_signed_in? && current_user.id != @item.user_id %>
+    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+    <% end %>
 
     <div class="item-explain-box">
       <span><%= "商品説明" %></span>
