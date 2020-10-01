@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update]
+  before_action :login, only: [:update]
 
   def index
     @items = Item.all
@@ -22,11 +23,8 @@ class ItemsController < ApplicationController
 
 
   def update
-    if current_user.id == @item.user_id
-        @item.update(item_params)
-    end
-    
     if @item.valid?
+       @item.update(item_params)
        redirect_to root_path
     else
        render :edit
@@ -40,5 +38,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def login
+    current_user.id == @item.user_id
   end
 end
