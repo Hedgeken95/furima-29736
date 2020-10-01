@@ -15,14 +15,15 @@ class Item < ApplicationRecord
       validates :area_id
       validates :day_id
     end
+    
     validates :item_name
     validates :item_text
-    validates_length_of :item_name, maximum: 40
-    validates_length_of :item_text, maximum: 1000
     validates_numericality_of :price, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_9999_999
     validates :price, format: { with: /\A[0-9]+\z/}
     validates :image
   end
+  validates_length_of :item_name, maximum: 40
+  validates_length_of :item_text, maximum: 1000
 
   belongs_to :user
   has_one_attached :image
