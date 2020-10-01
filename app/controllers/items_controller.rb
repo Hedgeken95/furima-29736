@@ -22,7 +22,10 @@ class ItemsController < ApplicationController
 
 
   def update
-    @item.update(item_params)
+    if current_user.id == @item.user_id
+        @item.update(item_params)
+    end
+    
     if @item.valid?
        redirect_to root_path
     else
