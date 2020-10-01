@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :login, only: [:update, :edit, :destroy]
 
   def index
     @items = Item.all
@@ -19,12 +21,33 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
+  def update
+    if @item.valid?
+       @item.update(item_params)
+       redirect_to root_path
+    else
+       render :edit
+    end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
   def item_params
     params.require(:item).permit(:image, :item_name, :item_text, :category_id, :status_id, :delivery_fee_id, :area_id, :day_id, :price).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def login
+    @item = Item.find(params[:id])
+    if current_user.id != @item.user_id
+      redirect_to root_path
+    end
   end
 end
