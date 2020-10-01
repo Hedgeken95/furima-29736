@@ -22,20 +22,23 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item.update(item_params)
     if @item.valid?
-       @item.update(item_params)
        redirect_to root_path
     else
        render :edit
     end
   end
 
+  def edit
+  end
+
   def destroy
     if @item.destroy
-      redirect_to root_path
+       redirect_to root_path
     else
       render :edit
-   end
+    end
   end
 
   private
@@ -50,7 +53,7 @@ class ItemsController < ApplicationController
   def login
     @item = Item.find(params[:id])
     if current_user.id != @item.user_id
-      redirect_to root_path
+       redirect_to root_path
     end
   end
 end
