@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
 
   def index
     @order = OrderAddress.new
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -28,8 +28,8 @@ class PurchasesController < ApplicationController
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: order_params[:item_id],
-      card: order_params[:token],   
-      currency:'jpy'        
+      card: order_params[:token],
+      currency:'jpy'
     )
   end
 end

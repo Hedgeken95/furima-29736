@@ -2,8 +2,7 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :postcode, :prefecture_id, :city, :block, :bilding, :phone_number
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
+
 
   with_options presence: true do
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/}
