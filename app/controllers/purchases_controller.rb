@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
  def order_params
     @item = Item.find(params[:item_id])
     params.permit(:token)
-    params.require(:order_address).permit(:user_id, :item_id, :postcode, :prefecture_id, :city, :block, :bilding, :phone_number)
+    params.permit(:user_id, :item_id, :postcode, :prefecture_id, :city, :block, :bilding, :phone_number)
   end
 
   def pay_item
