@@ -21,8 +21,60 @@ RSpec.describe User, type: :model do
 
       context "購入が失敗する場合" do
 
-        it ""
+        it "カードのトークンがない場合" do
+          @order_address.token = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Token can't be blank")
+        end
 
+        it "郵便番号がない場合" do
+          @order_address.postcode = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Postcode can't be blank")
+        end
+
+        it "都道府県がない場合" do
+          @order_address.prefecture_id = 1
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
+        end
+
+        it "市区町村がない場合" do
+          @order_address.city = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("City can't be blank")
+        end
+
+        it "番地がない場合" do
+          @order_address.block = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Block can't be blank")
+        end
+
+        it "電話番号がない場合" do
+          @order_address.phone_number = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
+        end
+
+        it "郵便番号にハイフンがない場合" do
+          @order_address.postcode = "1234567"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Postcode is invalid")
+        end
+
+        it "電話番号にハイフンがある場合" do
+          @order_address.phone_number = "0901234-567"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+        end
+
+        it "電話番号が11文字以上の場合" do
+          @order_address.phone_number = "090123456789"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        end
+      end
 
     end
-  
+  end
