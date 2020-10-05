@@ -39,7 +39,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :parchases
+- has_many :purchases
 
 ## items テーブル
 
@@ -60,7 +60,7 @@ Things you may want to cover:
 - belongs_to :user
 - has_one    :purchase
 
-## purchases テーブル
+## orders テーブル
 
 | Column | Type       | Options     |
 | ------ | ---------- | ----------- |
@@ -79,12 +79,12 @@ Things you may want to cover:
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
 | postcode       | string     | null: false |
-| prefecture_id	 | int        | null: false |
+| prefecture_id	 | integer    | null: false |
 | city           | string     | null: false |
 | block          | string     | null: false |
 | building	     | string     |
 | phone_number   | string     | null: false |
-| purchase      | references | null: false,foreign_key:true|
+| purchase       | references | null: false,foreign_key:true|
 
 ### Association
 

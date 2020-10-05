@@ -4,14 +4,15 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @item.item_name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
+       <%= image_tag @item.image ,class:"item-box-img" %>
+         <% if @item.order.present? %>
+           <div class='sold-out'>
+             <span>Sold Out!!</span>
+           </div>
+         <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">
@@ -30,11 +31,11 @@
     <% end %>
 
     <% if user_signed_in? && current_user.id != @item.user_id %>
-    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
-    <% end %>
-
-    <% if user_signed_in? && current_user.id != @item.user_id %>
-      <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+      <% if @item.order.present? %>
+        <p class="purchased_item">購入済</p>
+      <% else %>
+        <%= link_to '購入画面に進む', item_purchases_path(@item.id), class:"item-red-btn"%>
+      <% end %>
     <% end %>
 
     <div class="item-explain-box">
