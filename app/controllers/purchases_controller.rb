@@ -1,8 +1,10 @@
 class PurchasesController < ApplicationController
 
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, except: [:index]
+
   def index
     @order = OrderAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -19,7 +21,6 @@ class PurchasesController < ApplicationController
   private
 
  def order_params
-    @item = Item.find(params[:item_id])
     params.permit(:token, :item_id, :postcode, :prefecture_id, :city, :block, :bilding, :phone_number).merge(user_id: current_user.id)
   end
 
@@ -30,6 +31,20 @@ class PurchasesController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_index
+    if user_signed_in?
+      if current_user.id == @item.user_id || @item.order.present?
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 end
 
