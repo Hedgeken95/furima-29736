@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
 
   before_action :set_item, only: [:index, :create]
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, only: [:index]
 
   def index
     @order = OrderAddress.new
