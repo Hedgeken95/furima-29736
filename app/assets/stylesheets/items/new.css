@@ -227,3 +227,9 @@
 .inc {
   font-size: 13px;
 }
+
+.image img {
+  width: 30vh;
+  height: 30vh;
+  padding: 5vh 0;
+}

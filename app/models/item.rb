@@ -26,5 +26,5 @@ class Item < ApplicationRecord
   validates_length_of :item_text, maximum: 1000
   belongs_to :user
   has_one :order
-  has_one_attached :image
+  has_many_attached :images
 end
