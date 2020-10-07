@@ -53,6 +53,11 @@
         </div>
         <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
+           ブランド
+          <span class="indispensables">任意</span>
+        </div>
+        <%= f.collection_select(:brand_id, Brand.all, :id, :name, {}, {class:"select-box", id:"item-brand"}) %>
+        <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
