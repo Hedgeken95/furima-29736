@@ -20,7 +20,7 @@ class Item < ApplicationRecord
     validates :item_text
     validates_numericality_of :price, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_9999_999
     validates :price, format: { with: /\A[0-9]+\z/}
-    validates :image
+    validates :images
   end
   validates_length_of :item_name, maximum: 40
   validates_length_of :item_text, maximum: 1000

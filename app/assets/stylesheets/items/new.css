@@ -228,8 +228,8 @@
   font-size: 13px;
 }
 
-.image img {
-  width: 30vh;
-  height: 30vh;
+.images{
+  width: 50vh;
+  height: 50vh;
   padding: 5vh 0;
 }
