@@ -2,6 +2,7 @@ class Item < ApplicationRecord
    extend ActiveHash::Associations::ActiveRecordExtensions
 
      belongs_to_active_hash :category
+     belongs_to_active_hash :brand
      belongs_to_active_hash :status
      belongs_to_active_hash :area
      belongs_to_active_hash :day
@@ -16,6 +17,7 @@ class Item < ApplicationRecord
       validates :day_id
     end
     
+    validates :brand_id, numericality: { other_than: 1 }
     validates :item_name
     validates :item_text
     validates_numericality_of :price, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_9999_999
