@@ -28,6 +28,7 @@ class Item < ApplicationRecord
   validates_length_of :item_text, maximum: 1000
   belongs_to :user
   has_one :order
+  has_many :comments
   has_many_attached :images
   def self.search(search)
     if search != ""
