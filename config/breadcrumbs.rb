@@ -1,7 +1,31 @@
 crumb :root do
-  link "Home", root_path
+  link "トップページ", root_path
 end
 
+crumb :items do |item|
+  link "商品詳細ページ", item_path(item)
+  parent :root,item
+end
+
+crumb :items_edit do
+  link "商品編集ページ", edit_item_path
+  parent :items
+end
+
+crumb :purchases_index do |item|
+  link "商品購入ページ",  item_purchases_path(item)
+  parent :items,item
+end
+
+crumb :items_new do
+  link "商品出品ページ", new_item_path
+  parent :root
+end
+
+crumb :items_search do
+  link "検索結果ページ", search_item_path
+  parent :root
+end
 
 # crumb :projects do
 #   link "Projects", projects_path
