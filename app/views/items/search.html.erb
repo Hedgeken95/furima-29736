@@ -119,11 +119,9 @@
     </ul>
   </div>
   <%# /FURIMAの特徴 %>
-
-  <%# 商品一覧 %>
   <div class='item-contents'>
         <h2 class='title'>ピックアップカテゴリー</h2>
-        <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+        <%= link_to '検索結果', "#", class: "subtitle" %>
         <ul class='item-lists'>
           <% if @items.present? %>
            <% @items.each do |item| %>
@@ -177,11 +175,11 @@
 </div>
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>出品する</span>
-  <% if user_signed_in?%>
+   <% if user_signed_in?%>
       <a href="/items/new">
-      <% else %>
+   <% else %>
       <a href="/users/sign_in">
-      <% end %>
+   <% end %>
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   </a>
 </div>
