@@ -23,7 +23,7 @@ crumb :items_new do
 end
 
 crumb :items_search do
-  link "検索結果ページ", search_item_path
+  link "検索結果ページ", search_items_path
   parent :root
 end
 
