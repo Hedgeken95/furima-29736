@@ -27,8 +27,7 @@
 }
 
 .item-box-img {
-  height: 30vh;
-  width: 30vw;
+  width: 25vw;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
 }

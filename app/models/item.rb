@@ -17,7 +17,6 @@ class Item < ApplicationRecord
       validates :day_id
     end
     
-    validates :brand_id, numericality: { other_than: 1 }
     validates :item_name
     validates :item_text
     validates_numericality_of :price, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_9999_999
