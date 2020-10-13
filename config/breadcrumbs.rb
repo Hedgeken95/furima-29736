@@ -3,13 +3,13 @@ crumb :root do
 end
 
 crumb :items do |item|
-  link "商品詳細ページ", item_path(params[:id])
+  link "商品詳細ページ", item_path(item)
   parent :root,item
 end
 
-crumb :items_edit do
-  link "商品編集ページ", edit_item_path
-  parent :items
+crumb :items_edit do |item|
+  link "商品編集ページ", edit_item_path(item)
+  parent :items,item
 end
 
 crumb :purchases_index do |item|
