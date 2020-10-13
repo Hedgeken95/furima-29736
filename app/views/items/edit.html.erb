@@ -26,7 +26,7 @@ app/assets/stylesheets/items/new.css %>
       </div>
     </div>
     <% @item.images.each do |image| %>
-      <%= image_tag image, class: 'images' %>
+      <% image_tag image, class: 'images' %>
     <% end %>
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>
