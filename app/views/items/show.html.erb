@@ -2,6 +2,9 @@
 <% breadcrumb :items,@item%>
 <div class="item-show">
   <div class="item-box">
+
+    <%= render 'shared/error_messages', model: @comment %>
+
     <h2 class="name">
       <%= @item.item_name %>
     </h2>
