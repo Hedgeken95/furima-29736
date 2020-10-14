@@ -1,5 +1,8 @@
 FactoryBot.define do
   factory :comment do
-    text    {コメントします。}
+    association :user
+    association :item
+
+    text    {"コメントします"}
   end
 end

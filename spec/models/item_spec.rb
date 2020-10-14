@@ -17,9 +17,9 @@ RSpec.describe Item, type: :model do
 
     context "出品が成功しない場合" do
       it "画像は1枚必須であること(ActiveStorageを使用すること)" do
-        @item.image = nil
+        @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("Images can't be blank")
 
       end
       it "商品名が必須であること" do
