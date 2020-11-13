@@ -11,7 +11,7 @@ set :repo_url,  'git@github.com:Hedgeken95/furima-29736.git'
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
-set :rbenv_ruby, '’2.6.5' #カリキュラム通りに進めた場合、’2.6.5’ です
+set :rbenv_ruby, '2.6.5'
 
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
